@@ -8,4 +8,10 @@ router.get("/", eventController.getEvent);
 //CREATE
 router.post("/createEvent/:id", eventController.createEvent);
 
+//UPDATE EVENT
+router.put("/:idCreator/:id", eventController.updateEvent);
+
+//DELETE EVENT
+router.delete("/:id", eventController.deleteEvent);
+
 module.exports = router;

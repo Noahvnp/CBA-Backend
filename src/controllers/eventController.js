@@ -19,6 +19,29 @@ const eventController = {
       res.status(500).json(err);
     }
   },
+  updateEvent: async (req, res) => {
+    try {
+      const event = await Event.findByIdAndUpdate(
+        { _id: req.params.id },
+        { $set: { ...req.body, idCreator: req.params.idCreator } }
+      );
+      if (!event) {
+        res.status(404).json("Not found");
+      }
+      res.status(200).json("Update event successfully");
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+  deleteEvent: async (req, res) => {
+    try {
+      await Event.findByIdAndDelete(req.params.id);
+      res.status(200).json("Delete event successfully");
+    } catch (err) {
+      res.status(500).json(err);
+      
+    }
+  }
 };
 
 module.exports = eventController;
