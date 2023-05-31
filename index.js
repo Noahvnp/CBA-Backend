@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
-require("./src/configs/passport");
+require("./src/configs/passport")
 
 const authRoute = require("./src/routes/authRoute");
 const userRoute = require("./src/routes/userRoute");

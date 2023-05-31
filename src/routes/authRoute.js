@@ -32,7 +32,6 @@ router.get(
   (req, res, next) => {
     passport.authenticate("google", (err, profile) => {
       req.user = profile;
-    //   console.log(req);
       next();
     })(req, res, next);
   },
@@ -41,6 +40,5 @@ router.get(
     res.redirect(`/${req.user?.id}`);
   }
 );
-
 
 module.exports = router;
