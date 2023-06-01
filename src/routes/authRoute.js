@@ -24,7 +24,7 @@ router.post(
 // LOGIN WITH GOOGLE
 router.get(
   "/google",
-  passport.authenticate("google", { scope: ["profile"], session: false })
+  passport.authenticate("google", { scope: ["profile", "email"], session: false })
 );
 
 router.get(
@@ -37,7 +37,7 @@ router.get(
   },
   (req, res) => {
     // Successful authentication, redirect home.
-    res.redirect(`/${req.user?.id}`);
+    res.redirect(`/v1/user/${req.user?.id}`);
   }
 );
 
