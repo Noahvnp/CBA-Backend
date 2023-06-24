@@ -6,10 +6,10 @@ const cookieParser = require("cookie-parser");
 const authRoute = require("./src/routes/authRoute");
 const userRoute = require("./src/routes/userRoute");
 const sendMail = require("./src/routes/sendMailRoute");
-const newsRoute = require("./src/routes/newsRoute")
-const eventRoute = require("./src/routes/eventRoute")
+const newsRoute = require("./src/routes/newsRoute");
+const eventRoute = require("./src/routes/eventRoute");
 
-const config = require('./src/configs');
+const config = require("./src/configs");
 
 const PORT = config.app.port;
 const MONGO_URL = config.db.uri;
@@ -36,7 +36,10 @@ mongoose
 
 // Route
 
-
 app.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`);
+});
+
+app.get("/", (req, res) => {
+  res.send("CBA");
 });

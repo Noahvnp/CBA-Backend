@@ -4,13 +4,27 @@ const userController = require("../controllers/userController");
 const router = require("express").Router();
 
 // GET ALL USERS
-router.get("/", middlewareController.verifyToken, userController.getAllUsers);
+router.get("/", userController.getAllUsers);
+
+// GET USER
+router.get(
+  "/:id",
+  middlewareController.verifyTokenAndAdminAuth,
+  userController.getUser
+);
 
 // DELETE USER
-router.delete("/:id", middlewareController.verifyTokenAndAdminAuth, userController.deleteUser);
+router.delete(
+  "/:id",
+  middlewareController.verifyTokenAndAdminAuth,
+  userController.deleteUser
+);
 
 //UPADATE USER
-router.put("/:id", userController.updateUser);
-
+router.put(
+  "/:id",
+  middlewareController.verifyTokenAndAdminAuth,
+  userController.updateUser
+);
 
 module.exports = router;

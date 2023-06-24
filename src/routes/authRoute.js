@@ -4,15 +4,28 @@ const middlewareController = require("../middlewares/middlewareController");
 const router = require("express").Router();
 
 // REGISTER
-router.post("/register", authController.registerUser);
+router.post(
+  "/register",
+  authController.registerUser
+);
 
 // LOG IN
-router.post("/login", authController.loginUser);
+router.post(
+  "/login",
+  authController.loginUser
+);
 
 // REFRESH TOKEN
-router.post("/refresh", authController.requestRefreshToken);
+router.post(
+  "/refresh",
+  authController.requestRefreshToken
+);
 
 // LOG OUT
-router.post("/logout", middlewareController.verifyToken, authController.logoutUser);
+router.post(
+  "/logout",
+  // middlewareController.verifyTokenAndAdminAuth,
+  authController.logoutUser
+);
 
 module.exports = router;

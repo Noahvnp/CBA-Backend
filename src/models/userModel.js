@@ -25,6 +25,37 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    CBAJoningTime: {
+      type: String
+    },
+    bussinessAddress: {
+      city: String,
+      district: String,
+    },
+    bussinessIndustry: {
+      type: String,
+    },
+    bussinessName: {
+      type: String,
+    },
+    bussinessTaxID: {
+      type: String,
+    },
+    bussinessPhoneNumber: {
+      type: String,
+    },
+    bussinessCreateTime: {
+      type: String,
+    },
+    bussinessRepresentative: {
+      name: String,
+      phoneNumber: String,
+      email: {
+        type: String,
+        unique: true,
+      },
+      position: String,
+    },
   },
   { timestamps: true }
 );

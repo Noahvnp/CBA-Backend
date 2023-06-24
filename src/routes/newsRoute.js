@@ -4,7 +4,7 @@ const newsController = require("../controllers/newsController");
 const router = require("express").Router();
 
 //GET
-router.get("/", middlewareController.verifyTokenAndAdminAuth, newsController.getNews)
+router.get("/", newsController.getNews)
 
 // CREATE
 router.post("/createNews/:id", middlewareController.verifyTokenAndAdminAuth, newsController.createNews);

@@ -6,12 +6,24 @@ const router = require("express").Router();
 router.get("/", eventController.getEvent);
 
 //CREATE
-router.post("/createEvent/:id", eventController.createEvent);
+router.post(
+  "/createEvent/:id",
+  middlewareController.verifyTokenAndAdminAuth,
+  eventController.createEvent
+);
 
 //UPDATE EVENT
-router.put("/:idCreator/:id", eventController.updateEvent);
+router.put(
+  "/:idCreator/:id",
+  middlewareController.verifyTokenAndAdminAuth,
+  eventController.updateEvent
+);
 
 //DELETE EVENT
-router.delete("/:id", eventController.deleteEvent);
+router.delete(
+  "/:id",
+  middlewareController.verifyTokenAndAdminAuth,
+  eventController.deleteEvent
+);
 
 module.exports = router;
