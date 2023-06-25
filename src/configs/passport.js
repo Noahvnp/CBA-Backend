@@ -4,6 +4,8 @@ require("dotenv").config();
 
 const User = require("../models/userModel");
 
+const auth = require("../controllers/authController");
+
 passport.use(
   new GoogleStrategy(
     {
@@ -11,7 +13,7 @@ passport.use(
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: "http://localhost:8000/v1/auth/google/callback",
     },
-    async function (accessToken, refreshToken, profile, done) {
+    async function (accesstoken, profile, done) {
       // Check if google profile exist.
       if (profile.id) {
         User.findOne({ googleId: profile.id }).then((existingUser) => {
