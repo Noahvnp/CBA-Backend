@@ -1,13 +1,15 @@
 const middlewareController = require("../middlewares/middlewareController");
 const newsController = require("../controllers/newsController");
 
+const fileUploader = require('../configs/cloudinary');
+
 const router = require("express").Router();
 
 //GET
 router.get("/", middlewareController.verifyTokenAndAdminAuth, newsController.getNews)
 
 // CREATE
-router.post("/createNews/:id", middlewareController.verifyTokenAndAdminAuth, newsController.createNews);
+router.post("/createNews/:id", middlewareController.verifyTokenAndAdminAuth, fileUploader.single('newsPictureURL'), newsController.createNews);
 
 // UPDATE
 router.put("/:idCreator/:id", middlewareController.verifyTokenAndAdminAuth, newsController.updateNews);

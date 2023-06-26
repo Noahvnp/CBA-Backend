@@ -2,13 +2,13 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
-require("./src/configs/passport")
+require("./src/configs/passport");
 
 const authRoute = require("./src/routes/authRoute");
 const userRoute = require("./src/routes/userRoute");
 const sendMail = require("./src/routes/sendMailRoute");
-const newsRoute = require("./src/routes/newsRoute")
-const eventRoute = require("./src/routes/eventRoute")
+const newsRoute = require("./src/routes/newsRoute");
+const eventRoute = require("./src/routes/eventRoute");
 
 const config = require('./src/configs');
 
@@ -34,8 +34,6 @@ mongoose
   .connect(MONGO_URL)
   .then(() => console.log("Connected to database!"))
   .catch((err) => console.error(err));
-
-// Route
 
 
 app.listen(PORT, () => {

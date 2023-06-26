@@ -4,7 +4,8 @@ const newsController = {
   createNews: async (req, res) => {
     try {
       const idCreator = req.params.id;
-      const newNews = new News({ ...req.body, idCreator: idCreator });
+      const fileData = req.file;
+      const newNews = new News({ ...req.body, idCreator: idCreator, newsPictureURL: fileData?.path });
       const news = await newNews.save();
       res.status(200).json(news);
     } catch (err) {

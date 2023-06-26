@@ -19,7 +19,7 @@ const newsSchema = new mongoose.Schema(
     },
     newsPictureURL: {
       type: String,
-      required: true,
+      // required: true,
       minlength: 6,
     },
   },
