@@ -5,6 +5,7 @@ const router = require("express").Router();
 //GET
 router.get("/", eventController.getEvent);
 
+router.get("/:id", eventController.getEventbyId);
 //CREATE
 router.post(
   "/createEvent/:id",

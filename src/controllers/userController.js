@@ -21,7 +21,6 @@ const userController = {
     }
   },
 
-
   // DELETE USER
   deleteUser: async (req, res) => {
     try {
@@ -33,22 +32,52 @@ const userController = {
   },
 
   //UPDATE USER
+
+  //   updateUser: async (req, res) => {
+  //     try {
+  //       const salt = await bcrypt.genSalt(10);
+  //       const hashed = await bcrypt.hash(req.body.password, salt);
+  //       const user = await User.findOneAndUpdate(
+  //         { _id: req.params.id },
+  //         { $set: { ...req.body, password: hashed } }
+  //       );
+  //       if (!user) {
+  //         res.status(404).json("Not found");
+  //       }
+  //       res.status(200).json(`Successfully updated user ${req.body.username}`);
+  //     } catch (err) {
+  //       console.log(err);
+  //       res.status(500).json(err);
+  //     }
+  //   },
+
   updateUser: async (req, res) => {
     try {
-      const salt = await bcrypt.genSalt(10);
-      const hashed = await bcrypt.hash(req.body.password, salt);
+      let updateData = req.body;
+
+      // Kiểm tra nếu có mật khẩu mới được cung cấp
+      if (req.body.password) {
+        const salt = await bcrypt.genSalt(10);
+        const hashed = await bcrypt.hash(req.body.password, salt);
+        updateData = { ...updateData, password: hashed };
+      }
+
       const user = await User.findOneAndUpdate(
         { _id: req.params.id },
-        { $set: { ...req.body, password: hashed } }
+        { $set: updateData }
       );
+
       if (!user) {
-        res.status(404).json("Not found");
+        return res.status(404).json("Not found");
       }
-      res.status(200).json(`Successfully updated user ${req.body.username}`);
+
+      return res
+        .status(200)
+        .json(`Successfully updated user ${req.body.username}`);
     } catch (err) {
-      res.status(500).json(err);
+      console.log(err);
+      return res.status(500).json(err);
     }
   },
 };
-
 module.exports = userController;

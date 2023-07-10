@@ -2,13 +2,11 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
-
 const authRoute = require("./src/routes/authRoute");
 const userRoute = require("./src/routes/userRoute");
 const sendMail = require("./src/routes/sendMailRoute");
 const newsRoute = require("./src/routes/newsRoute");
 const eventRoute = require("./src/routes/eventRoute");
-
 const config = require("./src/configs");
 
 const PORT = config.app.port;

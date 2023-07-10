@@ -10,7 +10,7 @@ router.get("/", newsController.getNews)
 router.post("/createNews/:id", middlewareController.verifyTokenAndAdminAuth, newsController.createNews);
 
 // UPDATE
-router.put("/:idCreator/:id", middlewareController.verifyTokenAndAdminAuth, newsController.updateNews);
+router.put("/:idCreator/:id", newsController.updateNews);
 
 // DELETE
 router.delete("/:id", middlewareController.verifyTokenAndAdminAuth, newsController.deleteNews);

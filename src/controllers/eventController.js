@@ -9,6 +9,16 @@ const eventController = {
       res.status(500).json(err);
     }
   },
+  getEventbyId: async (req, res) => {
+    try {
+      const idBussiness = req.params.id;
+      const events = await Event.find({ idBussiness: idBussiness });
+      res.status(200).json(events);
+    } catch (error) {
+      res.status(500).json(error);
+    }
+    
+  },
   createEvent: async (req, res) => {
     try {
       const idBussiness = req.params.id;

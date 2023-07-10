@@ -44,6 +44,9 @@ const userSchema = new mongoose.Schema(
     bussinessPhoneNumber: {
       type: String,
     },
+    bussinessEmail: {
+      type: String,
+    },
     bussinessCreateTime: {
       type: String,
     },
@@ -56,6 +59,10 @@ const userSchema = new mongoose.Schema(
       },
       position: String,
     },
+    picturePath: {
+      type: String,
+      default: ""
+    }
   },
   { timestamps: true }
 );

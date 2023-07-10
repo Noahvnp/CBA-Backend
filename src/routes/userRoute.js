@@ -1,6 +1,5 @@
 const middlewareController = require("../middlewares/middlewareController");
 const userController = require("../controllers/userController");
-
 const router = require("express").Router();
 
 // GET ALL USERS
@@ -23,7 +22,7 @@ router.delete(
 //UPADATE USER
 router.put(
   "/:id",
-  middlewareController.verifyTokenAndAdminAuth,
+  // middlewareController.verifyTokenAndAdminAuth,
   userController.updateUser
 );
 
